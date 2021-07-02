@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<title>Bad Apple!!</title>
+	</head>
+	<body>
+		<canvas id="canvas" width="9" height="15"></canvas>
+		<video controls id="video" width="9" height="15">
+			<source src="Bad Apple!!.mp4" width="9" height="5">
+		</video>
+		<button id="btndownload">Download</button>		
+		<div id="file"></div>
+		<script type="text/javascript">
+			let canvas = document.getElementById("canvas");
+			let ctx = canvas.getContext("2d");
+
+			let video = document.getElementById("video");
+
+			//let blobBuilder;
+
+			//if("MozxBlobBuilder" in window){
+			//	blobBuilder = new MozBrobBuilder();
+			//}else if("WebKitBlobBiuilder" in window){
+			//	BlobBuilder = new WebKirBlobBuilder();
+			//}
+
+			//let a = document.createElement("a");
+			//let label = document.createTextNode("ダウンロード");
+			//let disp = document.getElementById("disp");
+
+			let imgData;
+
+			function main(){
+				ctx.drawImage(video, 0, 0, 9, 15);
+				imgData = ctx.getImageData(0, 0, 9, 15);
+				//blobBuilder.append(text);
+				requestAnimationFrame(main);
+			}
+
+			video.play();
+			addEventListener("load", main(), false);
+		</script>
+	</body>
+</html>
